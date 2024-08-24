@@ -22,10 +22,10 @@ MARGIN_BOTTOM = 10
 TB_BORDER = 0
 DEFAULT_CURRENCY = ("Euro", "EUR", "€")
 DEFAULT_LANGUAGE = "EN"
-
+DEFAULT_FONTS_PATH="repayment/fonts"
 
 class PDF(FPDF):
-    def __init__(self, language: str, currency: tuple[str, ...]):
+    def __init__(self, language: str, fonts_path: str, currency: tuple[str, ...]):
         super().__init__()
         self.set_auto_page_break(auto=True, margin=MARGIN_BOTTOM)
         self.set_margins(MARGIN_LEFT, MARGIN_TOP, MARGIN_RIGHT)
@@ -34,8 +34,8 @@ class PDF(FPDF):
         self.currency = currency[0]
         self.currency_sign = currency[-1]
 
-        self.add_font(FONT_FAMILY, "", "src/fonts/Roboto-Regular.ttf")
-        self.add_font(FONT_FAMILY, "B", "src/fonts/Roboto-Bold.ttf")
+        self.add_font(FONT_FAMILY, "", f"{fonts_path}/Roboto-Regular.ttf")
+        self.add_font(FONT_FAMILY, "B", f"{fonts_path}/Roboto-Bold.ttf")
 
     def format_number(self, value) -> str:
         return format_number(value, self.language)
@@ -263,9 +263,10 @@ class PDF(FPDF):
         filename: str,
         language=DEFAULT_LANGUAGE,
         currency=DEFAULT_CURRENCY,
+        fonts_path=DEFAULT_FONTS_PATH
     ) -> None:
 
-        pdf = PDF(language=language, currency=currency)
+        pdf = PDF(language=language, fonts_path=fonts_path, currency=currency)
         pdf.overview(
             start_date=repayment_schedule.start_date,
             initial_balance=repayment_schedule.initial_balance,
