@@ -25,7 +25,7 @@ dependencies = [
 ]
 
 [project.scripts]
-stringkeys = "src.repayment:main"
+stringkeys = "src:main"
 
 [project.optional-dependencies]
 
