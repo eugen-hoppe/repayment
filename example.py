@@ -1,7 +1,7 @@
 from datetime import datetime
 
-from src.core import Repayment
-from src.report import PDF
+from src.repayment.core import Repayment
+from src.repayment.report import PDF
 
 
 repayment_schedule = Repayment(
