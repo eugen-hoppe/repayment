@@ -33,3 +33,6 @@ stringkeys = "src.repayment:main"
 package-dir = { "" = "src" }
 packages = {"find" = { "where" = ["src"], "include" = ["*"] }}
 include-package-data = true
+
+[tool.setuptools.package-data]
+"repayment" = ["fonts/*"]
