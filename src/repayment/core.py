@@ -69,6 +69,7 @@ class Month:
                 self.balance += self.tr.principal
             self.balance = round(self.balance, 2)
             self.tr.installment = self.tr.interest + self.tr.principal
+        self.tr.round()
 
     def create_next_month(self):
         if self.balance == 0:
@@ -204,3 +205,10 @@ class Repayment:
 
     def pivot(self):
         return Transaction.pivot(self.years)
+
+    def display_year(self, year_id: int) -> int:
+        for quarter in self.years[year_id].quarter_list:
+            print(" ", quarter.quarter)
+            for month in quarter.month_list:
+                print(" " * 2, month.tr.data(), month.balance, month.date, sep=" " * 5)
+        return self.years[year_id].year
