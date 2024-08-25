@@ -22,7 +22,7 @@ MARGIN_BOTTOM = 10
 TB_BORDER = 0
 DEFAULT_CURRENCY = ("Euro", "EUR", "€")
 DEFAULT_LANGUAGE = "EN"
-DEFAULT_FONTS_PATH="repayment/fonts"
+DEFAULT_FONTS_PATH="fonts"
 
 class PDF(FPDF):
     def __init__(self, language: str, fonts_path: str, currency: tuple[str, ...]):
